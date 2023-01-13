@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+  <title>Self Serve</title>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div id="nav">
+Self Serve
+</span>
+</span>
+<a href="/ngrams">ngram Anything</a>
+<a href="/domainauthority">Domain Authority</a>
+<a href="/sentiment">Sentiment Analysis</a>
+<a href="/schemasearch">Schema Search</a>
+<span id="user">
+{{ user }}
+</span>
+</div>
+
+<div id="workspace">
+
+<div class="config">
+<h2>Self Serve</h2><br>
+
+
+<a href="/ngrams">ngram Anything</a><br>
+Get ngrams and their frequency from content<br><br>
+<a href="/domainauthority">Domain Authority</a><br>
+Get domain authority and trust score from SEMrush for a list of domains<br><br>
+<a href="/sentiment">Sentiment Analysis</a><br>
+Get sentiment scores for blocks of content<br><br>
+<a href="/schemasearch">Schema Search</a><br>
+Find pages using schema
+
+</div>
+</div>
+</body>
+</html>

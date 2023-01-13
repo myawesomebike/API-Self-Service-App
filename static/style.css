@@ -1,0 +1,108 @@
+body {
+	margin:0px;
+}
+#nav {
+	position:absolute;
+	top:0px;
+	left:0px;
+	right:0px;
+	margin:0px;
+	border:solid;
+	border-width:0px;
+	border-bottom-width:1px;
+	border-color:rgba(150,150,150,1);
+	padding:5px;
+	height:50px;
+	margin-bottom:10px;
+}
+#nav span, #nav a {
+	display:inline-block;
+	vertical-align:middle;
+	padding-left:5px;
+	padding-right:5px;
+}
+#nav #logo {
+	padding-right:30px;
+	font-family:sanchez,Georgia,Times,serif;
+	color:rgba(75, 78, 83,1);
+}
+#nav #user {
+	position:absolute;
+	margin:5px;
+	right:0px;
+}
+.config {
+	margin:auto;
+	max-width:1024px;
+}
+.toolrow {
+	display:flex;
+	padding:10px;
+	margin:5px;
+	background-color:rgba(225,225,225,1);
+}
+.toolrow h2 {
+	display:block;
+}
+.toolrow span {
+	align-content:stretch;
+	flex-grow:1;
+	#max-width:50%;
+}
+.toolrow b {
+	display:block;
+	font-size:12px;
+}
+.toolrow input[type=text], .toolrow textarea {
+	max-width:85%;
+	flex-grow:4;
+}
+.toolrow input[type=button] {
+	max-width:15%;
+	height:54px;
+	flex-grow:1;
+}
+.toolrow input, .toolrow textarea {
+	border:solid;
+	border-width:2px;
+	border-color:rgba(204,204,204,1);
+	border-radius:4px;
+	margin:5px;
+	padding:11px;
+	line-height:1.5;
+}
+.toolrow progress {
+	width:100%;
+}
+.toolrow #reportstatus {
+	font-size:12px;
+	width:100%;
+}
+#statusblock {
+	display:none;
+}
+.credits {
+	margin:15px;
+	padding:15px;
+	background-color:rgba(200,200,200,1);
+}
+.credits b {
+	margin:5px;
+}
+.infobox {
+	margin:15px;
+	padding:0px;
+}
+#submitButton:active {
+	background-color:rgba(200,200,200,1);
+	cursor:not-allowed;
+}
+#workspace {
+	max-width:1600px;
+	margin:auto;
+	margin-top:60px;
+}
+th {
+	background-color:rgba(0, 173, 187,1);
+	color:#FFFFFF;
+}

@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+  <title>Self Serve</title>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div id="nav">
+Self Serve
+</span>
+</span>
+<a href="/ngrams">ngram Anything</a>
+<a href="/domainauthority">Domain Authority</a>
+<a href="/sentiment">Sentiment Analysis</a>
+<a href="/schemasearch">Schema Search</a>
+<span id="user">
+{{ user }}
+</span>
+</div>
+
+<div id="workspace">
+
+<div class="config">
+<h2>ngram Anything</h2>
+<div class="toolrow">
+<textarea placeholder="Source Content" name="content" id="ngrambox"></textarea>
+<input type="submit" value="Get ngrams" id="submitButton" class="btn btn-secondary" onclick="toolRequest('get_ngrams','ngrambox');">
+</div>
+<div class="toolrow" id="statusblock">
+<span><progress id="reportprogress" max=100></progress><span id="reportstatus">Report status</span>
+</span>
+</div>
+</div>
+
+<div id="tooloutput">
+<div id="workspace">
+	{% if ngrams != [] %}
+		<table>
+		<tr><th>ngram</th><th>Instances</th></tr>
+		<tr><td colspan=2><a href=" {{ download['gdrive'] }}" target="_blank">Open in Sheets</a> - <a href=" {{ download['bq'] }}" target="_blank">Open in BigQuery</a></td></tr>
+		{% for thisNgram in ngrams %}
+			<tr><td>{{ thisNgram[0] }}</td><td>{{ thisNgram[1] }}</td></tr>
+		{% endfor %}
+		</table>
+	{% endif %}
+
+</div>
+</div>
+</body>
+</html>

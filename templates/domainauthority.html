@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+  <title>Self Serve</title>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div id="nav">
+Self Serve
+</span>
+</span>
+<a href="/ngrams">ngram Anything</a>
+<a href="/domainauthority">Domain Authority</a>
+<a href="/sentiment">Sentiment Analysis</a>
+<a href="/schemasearch">Schema Search</a>
+<span id="user">
+{{ user }}
+</span>
+</div>
+
+<div id="workspace">
+
+<div class="config">
+<h2>Domain Authority</h2>
+<div class="credits">
+<b>API Credits Today</b>{{ quotas['apiToday'] }} / {{ quotas['apiTotal'] }}<br>
+<b>User Credits This Month</b>{{ quotas['userMonth'] }} / {{ quotas['userTotal'] }}
+</div>
+
+{% if domainData == [] %}
+<div class="toolrow">
+<textarea placeholder="Domains" name="content" id="domainbox"></textarea>
+<input type="submit" value="Get Domain Authority" id="submitButton" class="btn btn-secondary" onclick="toolRequest('get_domain_authority','domainbox');">
+</div>
+<div class="toolrow" id="statusblock">
+<span><progress id="reportprogress" max=100></progress><span id="reportstatus">Report status</span>
+</span>
+</div>
+{% endif %}
+</div>
+
+<div id="tooloutput">
+<div id="workspace">
+	{% if domainData != [] %}
+		<table>
+		<tr><th>Domain</th><th>Score</th><th>Trust Score</th></tr>
+		<tr><td colspan=3><a href=" {{ download['gdrive'] }}" target="_blank">Open in Sheets</a> - <a href=" {{ download['bq'] }}" target="_blank">Open in BigQuery</a></td></tr>
+		{% for thisDomain in domainData %}
+			<tr><td>{{ thisDomain[0] }}</td><td>{{ thisDomain[1]['score'] }}</td><td>{{ thisDomain[1]['trust'] }}</td></tr>
+		{% endfor %}
+		</table>
+	{% endif %}
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+  <title>Self Serve</title>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div id="nav">
+Self Serve
+</span>
+</span>
+<a href="/ngrams">ngram Anything</a>
+<a href="/domainauthority">Domain Authority</a>
+<a href="/sentiment">Sentiment Analysis</a>
+<a href="/schemasearch">Schema Search</a>
+<span id="user">
+{{ user }}
+</span>
+</div>
+
+<div id="workspace">
+
+<div class="config">
+<h2>Sentiment Analysis</h2>
+<div class="credits">
+<b>API Credits Today</b>{{ quotas['apiToday'] }} / {{ quotas['apiTotal'] }}<br>
+<b>User Credits This Month</b>{{ quotas['userMonth'] }} / {{ quotas['userTotal'] }}
+</div>
+
+{% if sentimentData == [] %}
+<div class="toolrow">
+<textarea placeholder="Content" name="content" id="sentimentbox"></textarea>
+<input type="submit" value="Get Sentiment" id="submitButton" class="btn btn-secondary" onclick="toolRequest('get_sentiment','sentimentbox');">
+</div>
+<div class="toolrow" id="statusblock">
+<span><progress id="reportprogress" max=100></progress><span id="reportstatus">Report status</span>
+</span>
+</div>
+{% endif %}
+
+</div>
+
+<div id="tooloutput">
+<div id="workspace">
+	{% if sentimentData != [] %}
+		<table>
+		<tr><th>String</th><th>Score</th><th>Magnitude</th></tr>
+		<tr><td colspan=3><a href=" {{ download['gdrive'] }}" target="_blank">Open in Sheets</a> - <a href=" {{ download['bq'] }}" target="_blank">Open in BigQuery</a></td></tr>
+		{% for thisSentiment in sentimentData %}
+			<tr><td>{{ thisSentiment[0]['string'] }}</td><td>{{ thisSentiment[0]['score'] }}</td><td>{{ thisSentiment[0]['magnitude'] }}</td></tr>
+		{% endfor %}
+		</table>
+	{% endif %}
+
+</div>
+</div>
+</body>
+</html>

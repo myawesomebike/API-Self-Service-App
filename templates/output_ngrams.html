@@ -1,0 +1,9 @@
+{% if ngrams != [] %}
+	<table>
+	<tr><th>ngram</th><th>Instances</th></tr>
+	<tr><td colspan=2><a href=" {{ download }}" target="_blank">Open in Sheets</td></tr>
+	{% for thisNgram in ngrams %}
+		<tr><td>{{ thisNgram[0] }}</td><td>{{ thisNgram[1] }}</td></tr>
+	{% endfor %}
+	</table>
+{% endif %}

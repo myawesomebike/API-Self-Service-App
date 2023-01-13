@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+  <title>Self Serve</title>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div id="nav">
+Self Serve
+</span>
+</span>
+<a href="/ngrams">ngram Anything</a>
+<a href="/domainauthority">Domain Authority</a>
+<a href="/sentiment">Sentiment Analysis</a>
+<a href="/schemasearch">Schema Search</a>
+<span id="user">
+{{ user }}
+</span>
+</div>
+
+<div id="workspace">
+
+<div class="config">
+<h2>Schema Search</h2>
+<div class="credits">
+<b>API Credits Today</b>{{ quotas['apiToday'] }} / {{ quotas['apiTotal'] }}<br>
+<b>User Credits This Month</b>{{ quotas['userMonth'] }} / {{ quotas['userTotal'] }}
+</div>
+
+{% if schemaData == [] %}
+<div class="toolrow">
+		<form method="post" action="/search-schema">
+		<input type="text" class="querybox" placeholder="Search" name="query">
+		<br>
+		<input type="submit" value="Search Schema" id="submitButton" class="btn btn-secondary" onclick="self.submit(); event.preventDefault();">
+		</form>
+</div>
+<div class="toolrow" id="statusblock">
+<span><progress id="reportprogress" max=100></progress><span id="reportstatus">Report status</span>
+</span>
+</div>
+{% endif %}
+
+</div>
+
+<div id="tooloutput">
+<div id="workspace">
+	{% if schemaData != [] %}
+		<table>
+		<tr><th>URL</th><th>Title</th><th>Description</th><th>Schemas</th></tr>
+		{% for thisSchema in schemaData %}
+			<tr><td>{{ thisSchema[0] }}</td><td>{{ thisSchema[1] }}</td><td>{{ thisSchema[2] }}</td><td>{{ thisSchema[3] }}</td></tr>
+		{% endfor %}
+		</table>
+	{% endif %}
+
+</div>
+</div>
+</body>
+</html>
