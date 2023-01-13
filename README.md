@@ -39,8 +39,8 @@ This app utilizes several Google services to host the app, track report request,
 
 ### App Configuration and Google Services
 
-![App and Data Flow](https://github.com/myawesomebike/API-Self-Service-App/raw/master/static/app-config.jpg)
+![App and Data Flow](https://github.com/myawesomebike/API-Self-Service-App/blob/main/static/app-config.jpg)
 
 ### Example of the front end interface
 
-![Tool Example](https://github.com/myawesomebike/API-Self-Service-App/raw/master/static/tool-example.png)
+![Tool Example](https://github.com/myawesomebike/API-Self-Service-App/blob/main/static/tool-example.png)
